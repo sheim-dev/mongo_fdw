@@ -79,8 +79,13 @@ function install_json_lib
 function install_mongoc_driver
 {
 	cd mongo-c-driver
-	./configure --with-libbson=auto --enable-ssl
+	#./configure --with-libbson=auto --enable-ssl
+	mkdir cmake-build
+	cd cmake-build
+	cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF ..
+	make
 	make install
+	cd ..
 	cd ..
 }
 
